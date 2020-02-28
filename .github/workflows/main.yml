@@ -3,7 +3,7 @@ name: Build Pipeline
 on:
   push:
     branches:
-      - master
+      - develop
 
 jobs:
   build-deploy:
@@ -12,7 +12,7 @@ jobs:
         - name: Checkout
           uses: actions/checkout@v2
           with:
-            ref: master
+            ref: develop
 
         - name: Checkout submodules
           shell: bash
@@ -34,5 +34,5 @@ jobs:
           uses: peaceiris/actions-gh-pages@v2.5.1
           env:
             PERSONAL_TOKEN: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-            PUBLISH_BRANCH: gh-pages
+            PUBLISH_BRANCH: master
             PUBLISH_DIR: ./public
